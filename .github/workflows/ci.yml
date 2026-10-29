@@ -1,0 +1,23 @@
+name: SecureJS Lab CI
+on:
+  push:
+    branches: ["feature/**"]
+  pull_request:
+jobs:
+  quality-and-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Type-check
+        run: npm run check
+      - name: Unit tests and coverage
+        run: npm run coverage
+      - name: Build demo interface
+        run: npm run build
+      - name: Dependency audit
+        run: npm run audit

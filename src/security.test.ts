@@ -1,4 +1,4 @@
-import {describe,it,expect,vi} from 'vitest';
+import {describe,it,expect} from 'vitest';
 import {safeMerge,safeLookup,validateAttendee,canRead,canWrite,sanitizeForLog,safeDomText,publicConfig} from './security';
 describe('prototype pollution mitigation',()=>{
  it('rejects dangerous keys, including parsed JSON payloads',()=>{
