@@ -12,6 +12,7 @@ test('interactive secure demos work in Chromium and remain accessible at mobile 
  await page.getByRole('button',{name:/Run safe example/}).click();
  await expect(page.getByRole('status')).toContainText('executedAsMarkup');
  await expect(page.getByRole('status')).toContainText('false');
+ await page.evaluate(()=>window.scrollTo(0,0));
  await page.screenshot({path:testInfo.outputPath('securejs-desktop.png'),fullPage:true});
  await page.setViewportSize({width:390,height:844});
  await expect(page.getByRole('navigation',{name:'Security modules'})).toBeVisible();
