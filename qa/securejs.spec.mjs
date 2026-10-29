@@ -18,4 +18,6 @@ test('interactive secure demos work in Chromium and remain accessible at mobile 
  await page.getByRole('button',{name:'Curriculum'}).click();
  await expect(page.getByRole('heading',{name:'ES6 to secure engineering'})).toBeVisible();
  await page.screenshot({path:testInfo.outputPath('securejs-mobile.png'),fullPage:true});
+ const horizontalOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
+ expect(horizontalOverflow).toBeLessThanOrEqual(1);
 });
