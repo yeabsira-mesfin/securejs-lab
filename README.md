@@ -40,3 +40,7 @@ ArrayOperators includes Every, Filter, Find, FindIndex, Includes, IndexOf, Map a
 ## Portfolio summary
 
 Developed a tested React/TypeScript secure-coding playground illustrating prototype pollution defense, DOM XSS mitigation, input validation, RBAC/BOLA checks, safe logging, and secure API handling, with automated tests and CI.
+
+## Browser QA and local containers
+
+Run `docker compose up --build` and open http://127.0.0.1:8083 to view the static local demo. The original ES6 exercises remain untouched. GitHub Actions verifies TypeScript type checking, Vitest tests and coverage, dependency audit, desktop/mobile Chromium interactions, axe-core WCAG checks, and Docker container builds. See [QA.md](QA.md).
