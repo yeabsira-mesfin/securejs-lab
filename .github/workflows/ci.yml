@@ -21,3 +21,17 @@ jobs:
         run: npm run build
       - name: Dependency audit
         run: npm run audit
+
+      - name: Install browser for interactive QA
+        run: npx playwright install --with-deps chromium
+      - name: Verify secure coding labs in Chromium
+        run: npm run test:e2e
+      - name: Upload desktop/mobile screenshots and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: securejs-browser-qa
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
