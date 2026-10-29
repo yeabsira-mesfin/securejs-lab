@@ -1,25 +1,28 @@
 {
-  "name":"securejs-lab",
-  "private":true,
-  "version":"1.0.0",
-  "type":"module",
-  "scripts":{
-    "dev":"vite",
-    "build":"tsc --noEmit && vite build",
-    "test":"vitest run",
-    "test:watch":"vitest",
-    "coverage":"vitest run --coverage",
-    "check":"tsc --noEmit",
-    "audit":"npm audit --audit-level=high"
+  "name": "securejs-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "check": "tsc --noEmit",
+    "audit": "npm audit --audit-level=high"
   },
-  "dependencies":{"react":"^18.3.1","react-dom":"^18.3.1"},
-  "devDependencies":{
-    "@types/react":"^18.3.12",
-    "@types/react-dom":"^18.3.1",
-    "@vitejs/plugin-react":"^4.3.4",
-    "@vitest/coverage-v8":"^3.2.4",
-    "typescript":"^5.7.2",
-    "vite":"^6.3.0",
-    "vitest":"^3.2.4"
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^5.0.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.0",
+    "vitest": "^5.0.5"
   }
 }
