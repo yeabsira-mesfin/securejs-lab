@@ -1,0 +1,42 @@
+name: SecureJS Lab CI
+on:
+  push:
+    branches: ["feature/**"]
+  pull_request:
+jobs:
+  quality-and-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Type-check
+        run: npm run check
+      - name: Unit tests and coverage
+        run: npm run coverage
+      - name: Build demo interface
+        run: npm run build
+      - name: Dependency audit
+        run: npm run audit
+
+      - name: Install browser for interactive QA
+        run: npx playwright install --with-deps chromium
+      - name: Verify secure coding labs in Chromium
+        run: npm run test:e2e
+      - name: Upload desktop/mobile screenshots and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: securejs-browser-qa
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+
+      - name: Validate local Docker Compose configuration
+        run: docker compose config --quiet
+      - name: Build local container images
+        run: docker compose build
